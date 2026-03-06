@@ -6,6 +6,8 @@
 //         .Catch((e) => console.log(e)); //get find error
 
 const categoriesContainer = document.getElementById('categoriesContainer');
+// const treesContainer = document.getElementById('treesContainer');
+const loadingContainer = document.getElementById('loadingSpinner')
 // dynamic btn
 async function loadCategories() {
     // async await
@@ -24,8 +26,11 @@ async function loadCategories() {
 // dynamic trees section
 // load trees
 async function loadTrees() {
+    loadingSpinner.classList.remove('hidden')
+    loadingSpinner.classList.add('flex')
     const res = await fetch('https://openapi.programming-hero.com/api/plants');
     const data = await res.json();
+    loadingSpinner.classList.add('hidden')
     displayTrees(data.plants);
 }
 
